@@ -3,6 +3,7 @@ package carl.granstrom;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	TransactionListTest t = new TransactionListTest();
+	t.randomPrint();
     }
 }
