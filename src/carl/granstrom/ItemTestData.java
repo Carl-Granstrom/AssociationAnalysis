@@ -1,9 +1,11 @@
 package carl.granstrom;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class ItemTestData {
 
+    HashMap<Integer, Item> testData = new HashMap<>(20);
     Item[] testDataArray = new Item[20];
 
     ItemTestData(){
@@ -28,6 +30,9 @@ public class ItemTestData {
         testDataArray[18] = new Item("Wine, Red", 19l);
         testDataArray[19] = new Item("Wine, White", 20l);
         Arrays.sort(testDataArray);
+        for (int i = 0; i < testDataArray.length; i++){
+            testData.put(i, testDataArray[i]);
+        }
     }
 
     public void printItemList(){
@@ -38,8 +43,18 @@ public class ItemTestData {
         }
     }
 
+    public void printHashMapItemsList(){
+        for (int i = 0; i < testData.size(); i++){
+            System.out.println(testData.get(i).getName());
+        }
+    }
+
     public Item[] getTestDataArray(){
         return this.testDataArray;
+    }
+
+    public HashMap<Integer, Item> getTestData() {
+        return this.testData;
     }
 
     public static void main(String args[]){

@@ -26,7 +26,6 @@ public class Transaction {
         int width = random.nextInt(6) + random.nextInt(5) + 1;  //max transaction width of 10
         transaction = new long[width];
 
-        //KEEP WORKING HERE
         int counter = 0;
         for (Long itemId : transaction){
             boolean contains = false;
