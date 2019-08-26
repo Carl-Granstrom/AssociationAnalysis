@@ -1,11 +1,13 @@
 package carl.granstrom;
 
+import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.LongStream;
 
 public class Transaction {
-    private Long[] transaction;
-    private Long transactionID;
-    private static Long idCounter = 0l;
+    private long[] transaction;
+    private long transactionID;
+    private static long idCounter = 0l;
     private static Random random = new Random();
 
     Transaction(){
@@ -22,12 +24,19 @@ public class Transaction {
         this.transactionID = idCounter;
 
         int width = random.nextInt(6) + random.nextInt(5) + 1;  //max transaction width of 10
-        transaction = new Long[width];
+        transaction = new long[width];
 
         //KEEP WORKING HERE
         int counter = 0;
         for (Long itemId : transaction){
-            long itemNr = (long)random.nextInt(20) + 1;
+            boolean contains = false;
+            long itemNr;
+            do {
+                itemNr = (long)random.nextInt(20) + 1;
+                long finalItemNr = itemNr;
+                contains = LongStream.of(transaction).anyMatch(x -> x == finalItemNr);
+            } while (contains);
+
             transaction[counter] = itemNr;
             counter++;
         }
@@ -35,8 +44,12 @@ public class Transaction {
 
     }
 
+    public long[] getTransaction(){
+        return transaction;
+    }
+
     public void printTransaction(){
-        for (Long itemId : transaction) {
+        for (long itemId : transaction) {
             System.out.println(itemId);
         }
     }

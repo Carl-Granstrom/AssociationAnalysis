@@ -1,5 +1,6 @@
 package carl.granstrom;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class TransactionListTest {
@@ -9,6 +10,7 @@ public class TransactionListTest {
     TransactionListTest(){
         for (int i = 0; i< 50000 ;i++){
             transactions[i] = new Transaction(true);
+            Arrays.sort(transactions[i].getTransaction());
         }
     }
 
@@ -19,6 +21,9 @@ public class TransactionListTest {
             transactions[randomChoice].printTransaction();
             System.out.println();
         }
+    }
 
+    public Transaction[] getTransactionlist(){
+        return this.transactions;
     }
 }

@@ -38,6 +38,10 @@ public class ItemTestData {
         }
     }
 
+    public Item[] getTestDataArray(){
+        return this.testDataArray;
+    }
+
     public static void main(String args[]){
         ItemTestData itd = new ItemTestData();
         itd.printItemList();
